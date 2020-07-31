@@ -1,0 +1,9 @@
+name: "learR-website"
+output_dir: "."
+navbar:
+  title: "learR"
+  left:
+    - text: "Welcome!"
+      href: index.html
+    - text: "Session1"
+      href: about.html
