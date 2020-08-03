@@ -91,6 +91,10 @@ h1 .header-section-number {
     overflow: hidden;
 }
 
+div {
+  column-gap: 40px;
+}
+
 blockquote
 {
      background-color: #f0f7fb;
