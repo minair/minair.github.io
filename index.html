@@ -11,7 +11,7 @@
 
 
 
-<title>Learn R</title>
+<title>index.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,24 +20,7 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
 
 
 
@@ -68,6 +51,7 @@ h6 {
 }
 </style>
 
+<link rel="stylesheet" href="css\camp_style.css" type="text/css" />
 
 
 
@@ -272,10 +256,33 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="Week1-1.html">Week 1-1</a>
+  <a href="agenda.html">Agenda</a>
 </li>
-<li>
-  <a href="Week1-2.html">Week 1-2</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Week 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Week1-1.html">Week 1-1</a>
+    </li>
+    <li>
+      <a href="Week1-2.html">Week 1-2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Week 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Week 2-1</li>
+    <li class="dropdown-header">Week 2-2</li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -289,12 +296,40 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Learn R</h1>
 
 </div>
 
 
-<p>Hello, World!</p>
+<p><br> <br> <br></p>
+<center>
+<font size = "20"><strong>Learn R</strong></font>
+</center>
+<p><br></p>
+<div class="card">
+<p><br> <font size = "5"><strong>Welcome!</strong></font></p>
+<p>Join us, learn R, and use your powers for good.</p>
+</div>
+<p><a href="agenda.html"><font size = "16" color = "steelblue"><strong>Agenda</strong></font></a></p>
+<div style="float: left; width: 40%;">
+<p><a href="agenda.html"><img src="image/Rstudio_ex.png" width="400" /></a></p>
+</div>
+<div style="float: right; width: 60%;">
+<ul>
+<li><p>Week 1-1</p>
+<ul>
+<li><p>creating an R project</p></li>
+<li><p>basic data types</p></li>
+<li><p>basic data structures</p></li>
+</ul></li>
+<li><p>Week 1-2</p>
+<ul>
+<li><p>packages</p></li>
+<li><p>read and write files: plain text, excel</p></li>
+<li><p>view data frame info</p></li>
+<li><p>missing values and duplicated values</p></li>
+</ul></li>
+</ul>
+</div>
 
 
 

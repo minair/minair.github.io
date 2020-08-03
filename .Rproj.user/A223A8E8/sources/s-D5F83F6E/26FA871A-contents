@@ -1,5 +1,61 @@
 ---
-title: "Learn R"
+title: ""
+output:
+  html_document:
+    css: css/camp_style.css
+    fontsize: 18pt
+    highlight: tango
+    monofont: Source Code Pro
+    number_sections: yes
+    self_contained: no
+    toc: yes
+    toc_depth: 1
 ---
 
-Hello, World!
+<br>
+<br>
+<br>
+
+<center>
+<font size = "20">__Learn R__</font>
+</center>
+
+
+<br>
+
+::::{.card data-latex=""}
+
+<br>
+<font size = "5">__Welcome!__</font>
+
+Join us, learn R, and use your powers for good.
+
+::::
+
+[<font size = "16" color = "steelblue">__Agenda__</font>](agenda.html)
+
+<div style="float: left; width: 40%;">
+[![](image/Rstudio_ex.png){width=400px}](agenda.html)
+</div>
+
+<div style="float: right; width: 60%;">
++ Week 1-1
+
+  * creating an R project
+
+  * basic data types
+
+  * basic data structures
+
++ Week 1-2
+
+  * packages
+
+  * read and write files: plain text, excel
+
+  * view data frame info
+
+  * missing values and duplicated values
+
+
+</div>

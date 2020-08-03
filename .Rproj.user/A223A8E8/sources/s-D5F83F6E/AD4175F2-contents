@@ -3,7 +3,23 @@ output_dir: "."
 navbar:
   title: "Learn R"
   left:
-    - text: "Week 1-1"
-      href: Week1-1.html
-    - text: "Week 1-2"
-      href: Week1-2.html
+    - text: "Agenda"
+      href: agenda.html
+      
+    - text: "Week 1"
+      menu:
+        - text: "Week 1-1"
+          href: Week1-1.html
+        - text: "Week 1-2"
+          href: Week1-2.html
+          
+    - text: "Week 2"
+      menu:
+        - text: "Week 2-1"
+          href: 
+        - text: "Week 2-2"
+          href: 
+
+output:
+  html_document:
+    css: 'camp_style.css'

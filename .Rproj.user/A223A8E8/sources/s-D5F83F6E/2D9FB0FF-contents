@@ -16,29 +16,14 @@ output:
 <br>
 <br>
 
-<center>
-<font size = "20">__Learn R__</font>
-</center>
+<font size = "16" color = "steelblue">__Agenda__</font>
 
 
-<br>
+![](image/Rstudio_ex.png){width=400px}
 
-::::{.card data-latex=""}
+<font size = "6">__Week 1__</font>
 
-<br>
-<font size = "5">__Welcome!__</font>
-
-Join us, learn R, and use your powers for good.
-
-::::
-
-[<font size = "16" color = "steelblue">__Agenda__</font>](agenda.html)
-
-<div style="float: left; width: 40%;">
-[![](image/Rstudio_ex.png){width=400px}](agenda.html)
-</div>
-
-<div style="float: right; width: 60%;">
+<div style="float: left; width: 50%;">
 + Week 1-1
 
   * creating an R project
@@ -46,6 +31,9 @@ Join us, learn R, and use your powers for good.
   * basic data types
 
   * basic data structures
+</div>
+
+<div style="float: right; width: 50%;">
 
 + Week 1-2
 
