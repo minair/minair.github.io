@@ -1,0 +1,287 @@
+---
+title: "Week1-2"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# Hello! {-}
+<hr class="hr2">
+
+<center>
+![](image/Cheerful.gif)
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+# Add packages
+<hr>
+
+::::{.card data-latex=""}
+<br>
+__What is an R package?__ 
+
+::::
+
+A package is a small add-on for R, it’s like a phone App for your phone. They add capabilities like statistical functions, mapping powers, and special charts to R. 
+
+* Install packages: __install.packages("pkgs_name")__
+
+* Load packages: __library(pkgs-name)__
+
+* Remove packages: __remove.packages("pkgs_name")__
+
+To install multiple packages:  __install.packages(c("pkg1","pkg2"))__
+
+Tidyverse packages: a collection of packages for tidy data
+https://www.tidyverse.org/packages/
+
+::::{.quiz data-latex="Exercise 1"}
+
+__Exercise 1__
+
+Install two packages: data.table and janitor
+
+::::
+
+# Import data
+<hr>
+
+## Load data from csv files
+
+The main data format used in R is the CSV (comma-separated values). It looks squished together as plain text, but that’s okay! When opened in R, the text becomes a familiar looking table with columns and rows.
+
+```{r, eval=F, echo=T}
+
+library(tidyverse) # library readr has been loaded with tidyverse
+
+file_name_csv <- "./input/ozone_samples_demo.csv" # assign the file with its path to a variable 
+
+air_data <- read_csv(file_name_csv)
+
+```
+
+Sometimes there are a few lines of metadata at the top of the file. You can use skip = n to skip the first n lines.
+
+```{r, eval=F, echo=T}
+
+air_data <- read_csv(file_name_csv, skip = 3)
+
+```
+
+The data might not have column names. You can use col_names = FALSE to tell read_csv() not to treat the first row as headings, and instead label them sequentially from X1 to Xn:
+
+
+```{r, eval=F, echo=T}
+
+air_data <- read_csv(file_name_csv, skip = 3, col_names = FALSE)
+
+```
+
+https://rawgit.com/rstudio/cheatsheets/master/data-import.pdf
+
+
+## Load data from other text files
+
+We use the function read_delim(file, delim) to read a txt file with any delimiter. Check the cheatsheet of readr for example. 
+
+::::{.quiz data-latex="Exercise 2"}
+
+__Exercise 2__
+
+Read data from ozone_samples_demo.txt
+
+::::
+
+## Load data from excel files
+
+```{r, eval=F}
+library(readxl) # load readxl library
+
+file_name <- "./input/ozone_samples_demo_excel.xlsx" # assign the excel file to a variable
+
+excel_sheets(file_name) # view all sheet names in the file
+
+air_data <- read_excel(file_name, 1) # read data in the first sheet 
+
+#air_data <- read_excel(excel_file, 1, range = cell_cols("A:E"))  # select columns A to E
+
+head(air_data)
+```
+
+## Load data from website or ftp site
+
+```{r, eval= F}
+library(data.table)
+
+url_1 <- "https://raw.githubusercontent.com/minair/learnR/master/data/ozone_samples_demo.csv"
+
+air_data <- read_csv(url_1) # read data from a website
+
+head(air_data)
+
+url_2 <- "ftp://ftp.ncdc.noaa.gov/pub/data/asos-fivemin/6401-2020/64010K0J4202001.dat"
+
+met_data <- fread(url_2) # read data from a ftp site
+
+download.file(url_2, "./input/64010K0J4202001.dat") # download file to local directory
+
+```
+
+
+## Read data from SQL database
+
+https://www.r-bloggers.com/setting-up-an-odbc-connection-with-ms-sql-server-on-windows/
+https://www.statmethods.net/input/dbinterface.html
+
+
+## Write to a file
+
+Write to a text file
+
+```{r, eval=F}
+write_csv(df, file) # write to csv files
+
+write_delim(df, file, delim = "")
+
+```
+
+Write to an excel file
+
+```{r, eval=F}
+
+library(openxlsx)
+
+write.xlsx(df, file )
+
+```
+::::{.quiz data-latex="Exercise 3"}
+
+__Exercise 3__
+
+Save the air_data as plain text file with each row seperated by | 
+<br>
+write the air_data to an excel file
+
+::::
+
+# Explore data
+<hr>
+
+## Data frame info
+
+Use these functions to get to know your data frame
+
+```{r, eval= F}
+
+library(dplyr)
+
+glimpse(air_data) # display some portions of the data 
+
+summary(air_data) # summary of all column valules
+
+names(air_data) # print the column names
+
+nrow(air_data) #  number of rows
+
+ncol(air_data) #  number of columns
+
+summary(air_data) # summary of all column values (ex. max, mean, median), check NA values
+
+```
+
+https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+## Missing values
+
+In R, the missing values are coded by the symbol __NA__.
+
+```{r, eval=F}
+
+is.na(air_data) # check if there're missing values, return a logical matrix
+
+sum(is.na(air_data)) # count the number of missing values
+
+summary(air_data) # another approach to look for missing values
+
+air_data_no_na <- na.omit(air_data) # drop out any rows with missing values
+
+sum(is.na(air_data_no_na))
+
+```
+
+## Duplicate rows
+
+<center>
+![](image/duplicates.png){width=350px}
+
+</center>
+
+```{r, eval=F}
+
+duplicated(air_data) # return a logical vector for duplicated values
+
+sum(duplicated(air_data)) 
+
+distinct(air_data) # return the unique row elements
+
+unique(air_data)
+
+```
+
+
+# Recap
+
+::::{.tip data-latex=""}
+<br>
+
+* packages
+
+* read and write files: plain text, excel
+
+* view data frame info
+
+* missing values and duplicated values
+
+::::
+
+
+
+
+
+
+
+

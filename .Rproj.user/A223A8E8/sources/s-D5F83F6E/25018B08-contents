@@ -1,0 +1,398 @@
+---
+title: "Week1-1"
+output:
+  html_document:
+    css: css/camp_style.css
+    fontsize: 18pt
+    highlight: tango
+    monofont: Source Code Pro
+    number_sections: yes
+    self_contained: no
+    toc: yes
+    toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# Hello! {-}
+<hr class="hr2">
+
+<center>
+![](image/Cheerful.gif)
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+# Overview of R
+<hr>
+## What's R? 
+
+R is a programming language developed by Ross Ihaka and Robert Gentleman in the Department of Statistics at the University of Auckland, New Zealand. <br>
+
+R has comprehensive statistical analysis packages. It is open-source, free, and dynamic software environment. It has been used for data analysis, data manipulation, calculation, and graphical display.
+
+Pros:<br>
+
+::::{.card data-latex=""}
+
+R’s biggest advantage is the vast array of packages, over 10,000 packages and the number is growing.
+Unmatched quality plotting and graphing.
+
+::::
+
+Cons:<br>
+
+::::{.card data-latex=""}
+
+Memory management, speed, and security.
+
+::::
+    
+<center>
+![](image/R.png){width=400px}
+</center>
+
+## Who uses R
+<center>
+![](image/R_by_industry.png){width=750px}
+
+https://stackoverflow.blog/2017/10/10/impressive-growth-r/
+
+</center>
+
+## When we use R
+
+
+• To connect to databases <br>
+• To read/download data from websites <br>
+• To document and share methods <br>
+• When data will have frequent updates <br>
+• When we want to improve a process over time
+
+
+# RStudio - A Grand Tour 
+<hr>
+
+RStudio is the integrated development environment (IDE) for R
+
+![](image/rstudio.png)
+
+
+## Customize R studio
+
+Let’s add a little style so R Studio feels like home. Follow these steps to change the font-size and color scheme:
+
+ 1. Go to __Tools__ on the top navigation bar.
+ 2. Choose __Global Options...__
+ 3. Choose __Appearance__ with the paint bucket.
+ 4. Increase the __Editor Font size__
+ 5. Pick an __Editor theme__ you like.
+        The default is Textmate if you want to go back
+
+![](image/font_change.png)
+
+## Make a R project
+
+Step 1: Start a new project <br>
+
+::::{.card data-latex=""}
+
+In Rstudio select File from the top menu bar <br>
+
+Choose _New Project…_ <br>
+
+Choose _New Directory_ <br>
+
+Choose _New Project_ <br>
+
+Enter a project name such as "training" <br>
+
+Select _Browse…_ and choose a folder where you normally perform your work <br>
+
+Click _Create Project_ <br>
+
+In the Plots and files panel, click _Files_, then _New Folder_ to create subfolders, e.g. input, script, output, etc. 
+
+::::
+
+
+Step 2: Open a new script <br>
+
+::::{.card data-latex=""}
+
+__File > New File > R Script__ <br>
+
+Click the floppy disk save icon <br>
+
+Give it a name: Simba.R or session1_training.R will work well <br>
+
+::::
+
+
+::::{.quiz data-latex="Exercise 1"}
+
+__Exercise 1__
+
+Create a R project 
+
+::::
+
+# R coding basics
+<hr>
+
+## Create an object
+
+All R statements where you create objects have the same form:
+
+```{r, eval=FALSE, echo=T}
+
+object_name <- value
+
+```
+
+
+You can create new objects using the “left arrow” <-. It’s typed with a less-than sign < followed by a hyphen -. It’s more officially known as the _assignment operator_.
+
+RStudio’s keyboard shortcut: Alt + - (the minus sign) 
+
+## Name an object
+
+Object names must start with a letter, and can only contain letters, numbers, _ and .
+
+::::{.quiz data-latex="Exercise 2"}
+
+__Exercise 2__
+
+What happens when you add these to your R script? <br>
+
+To run a line of code in your script, click the cursor anywhere on that line and press CTRL+ENTER
+
+```{r, eval=FALSE, echo=T}
+
+n data <- 5
+
+n*data <- 5
+
+n_data <- 5
+
+n.data <- 5
+
+data! <- 5
+
+1st_data <- 5
+
+```
+::::
+
+## Calling functions
+<br>
+R has a large collection of built-in functions that are called like this:
+
+
+```{r, eval=FALSE, echo=T}
+
+function_name(arg1 = val1, arg2 = val2, ...)
+
+```
+
+For example:
+
+using sum() to take summation of all numbers in its arguments
+
+```{r, eval=FALSE, echo=T}
+
+a <- 5
+b <- 6
+c <- 10
+sum(a,b,c)
+
+```
+To get the help of a function, type ?function_name or search from the 'Plots and files' Panel 
+
+::::{.quiz data-latex="Exercise 3"}
+
+__Exercise 3__
+
+Use function seq() to create a sequence of numbers from 0 to 20 with increment 5.
+
+::::
+
+
+## Basic data types
+
+Four common data types:
+
+::::{.card data-latex=""}
+
+__integer__: numbers that do not contain decimal values, 2L <br> 
+          as.integer(), integer(), is.integer()
+          
+__double or numeric__: numbers with decimal values, 2.0, 5.2 <br>
+          as.double(), double(), is.double()
+          
+__character or string__: alphabets or numbers enclosed by quotes, "hello", "a" <br>
+          as.character(), character(), is.character()
+
+__logical__: a variable that can have a value of TRUE/T and FALSE/F <br>
+          as.logical(), logical(), is.logical
+
+::::
+
+R provides several functions to examine the type of objects, for example
+
+::::{.card data-latex=""}
+
+• class()  <br>
+
+• typeof() <br>
+
+• __str()__ <br>
+
+::::
+
+
+## Data structure
+
+Commonly used data structures in R:
+
+::::{.card data-latex=""}
+
+• vector  <br>
+
+• data frame <br>
+
+• list <br>
+
+• matrix <br>
+
+::::
+
+### Vector
+<center>
+![](image/vector.png){width=250px}
+</center>
+Vector is the simplest type of data structure in R. It is a sequence of data elements of the __same basic type__. <br>
+
+Create a vector using function __c()__: place the elements seperated by a comma between parentheses. 
+
+
+```{r, eval=F}
+
+conc <- c(80, 40, 8) # numeric vector (use hash sign to add comments)
+
+conc
+
+is.vector(conc) # check if conc is a vector
+
+length(conc) # print the length of conc
+
+str(conc) # display overall info of conc
+
+View(conc) # invoke a spreadsheet-style data viewer
+
+pollutants <- c("ozone", "no2", "pm2.5") # character vector
+
+
+```
+
+::::{.quiz data-latex="Exercise 4"}
+
+__Exercise 4__
+
+Create a logical vector with elements of TRUE, FALSE, FALSE and check its info
+
+::::
+
+### Data frame
+<center>
+![](image/dataframe.png){width=350px}
+</center>
+
+A table in R is known as a data frame. We can think of it as a group of columns, where each column is made from a vector. Data frames in R have columns of data that are all the same length.
+
+Let's make a data frame with two columns using __data.frame()__: 
+
+```{r, eval = F}
+#create a talbe with two columns: item & value
+monitor_df <- data.frame(pollutant = pollutants,
+                          design_value = conc)
+
+# print the monitor_df data frame to the console
+monitor_df
+
+```
+
+View your data frame using:
+View()
+
+
+Use the $ sign after the name of your table to see the values in a column
+
+
+```{r}
+monitor_df$pollutant
+```
+
+
+::::{.quiz data-latex="Exercise 5"}
+
+__Exercise 5__
+
+Add a third column (above_naaqs) to monitor_df using the logical vector created in Exercise 4
+View your data frame using str() and View()
+
+::::
+
+
+### Matrix
+
+<center>
+![](image/matrix.png){width=350px}
+
+</center>
+
+A matrix is two-dimensional data with same types
+
+### List
+<center>
+![](image/list.png){width=250px}
+
+</center>
+
+
+A list is a combination of elements with different types and lengths.
+
+# Recap
+
+::::{.tip data-latex=""}
+<br>
+
+* creating an R project
+
+* basic data types
+
+* basic data structures
+
+::::

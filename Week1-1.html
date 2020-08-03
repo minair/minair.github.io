@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Week1-1</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css\camp_style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Learn R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="Week1-1.html">Week 1-1</a>
+</li>
+<li>
+  <a href="Week1-2.html">Week 1-2</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Week1-1</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#hello">Hello!</a></li>
+<li><a href="#overview-of-r"><span class="toc-section-number">1</span> Overview of R</a></li>
+<li><a href="#rstudio---a-grand-tour"><span class="toc-section-number">2</span> RStudio - A Grand Tour</a></li>
+<li><a href="#r-coding-basics"><span class="toc-section-number">3</span> R coding basics</a></li>
+<li><a href="#recap"><span class="toc-section-number">4</span> Recap</a></li>
+</ul>
+</div>
+
+<div id="hello" class="section level1 unnumbered">
+<h1>Hello!</h1>
+<hr class="hr2">
+<center>
+<img src="image/Cheerful.gif" />
+</center>
+<p><br></p>
+<p>We aren’t computer scientists and that’s okay!</p>
+<p>We make lots of mistakes. Mistakes are funny. You can laugh with us.</p>
+<p>Let’s go, Simba, Pumbaa, and Timon!</p>
+<br><br>
+<hr class="hr2">
+<p><br></p>
+</div>
+<div id="overview-of-r" class="section level1">
+<h1><span class="header-section-number">1</span> Overview of R</h1>
+<hr>
+<div id="whats-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> What’s R?</h2>
+<p>R is a programming language developed by Ross Ihaka and Robert Gentleman in the Department of Statistics at the University of Auckland, New Zealand. <br></p>
+<p>R has comprehensive statistical analysis packages. It is open-source, free, and dynamic software environment. It has been used for data analysis, data manipulation, calculation, and graphical display.</p>
+<p>Pros:<br></p>
+<div class="card">
+<p>R’s biggest advantage is the vast array of packages, over 10,000 packages and the number is growing. Unmatched quality plotting and graphing.</p>
+</div>
+<p>Cons:<br></p>
+<div class="card">
+<p>Memory management, speed, and security.</p>
+</div>
+<center>
+<img src="image/R.png" width="400" />
+</center>
+</div>
+<div id="who-uses-r" class="section level2">
+<h2><span class="header-section-number">1.2</span> Who uses R</h2>
+<center>
+<p><img src="image/R_by_industry.png" width="750" /></p>
+<p><a href="https://stackoverflow.blog/2017/10/10/impressive-growth-r/" class="uri">https://stackoverflow.blog/2017/10/10/impressive-growth-r/</a></p>
+</center>
+</div>
+<div id="when-we-use-r" class="section level2">
+<h2><span class="header-section-number">1.3</span> When we use R</h2>
+<p>• To connect to databases <br> • To read/download data from websites <br> • To document and share methods <br> • When data will have frequent updates <br> • When we want to improve a process over time</p>
+</div>
+</div>
+<div id="rstudio---a-grand-tour" class="section level1">
+<h1><span class="header-section-number">2</span> RStudio - A Grand Tour</h1>
+<hr>
+<p>RStudio is the integrated development environment (IDE) for R</p>
+<p><img src="image/rstudio.png" /></p>
+<div id="customize-r-studio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Customize R studio</h2>
+<p>Let’s add a little style so R Studio feels like home. Follow these steps to change the font-size and color scheme:</p>
+<ol style="list-style-type: decimal">
+<li>Go to <strong>Tools</strong> on the top navigation bar.</li>
+<li>Choose <strong>Global Options…</strong></li>
+<li>Choose <strong>Appearance</strong> with the paint bucket.</li>
+<li>Increase the <strong>Editor Font size</strong></li>
+<li>Pick an <strong>Editor theme</strong> you like. The default is Textmate if you want to go back</li>
+</ol>
+<p><img src="image/font_change.png" /></p>
+</div>
+<div id="make-a-r-project" class="section level2">
+<h2><span class="header-section-number">2.2</span> Make a R project</h2>
+<p>Step 1: Start a new project <br></p>
+<div class="card">
+<p>In Rstudio select File from the top menu bar <br></p>
+<p>Choose <em>New Project…</em> <br></p>
+<p>Choose <em>New Directory</em> <br></p>
+<p>Choose <em>New Project</em> <br></p>
+<p>Enter a project name such as “training” <br></p>
+<p>Select <em>Browse…</em> and choose a folder where you normally perform your work <br></p>
+<p>Click <em>Create Project</em> <br></p>
+<p>In the Plots and files panel, click <em>Files</em>, then <em>New Folder</em> to create subfolders, e.g. input, script, output, etc.</p>
+</div>
+<p>Step 2: Open a new script <br></p>
+<div class="card">
+<p><strong>File &gt; New File &gt; R Script</strong> <br></p>
+<p>Click the floppy disk save icon <br></p>
+<p>Give it a name: Simba.R or session1_training.R will work well <br></p>
+</div>
+<div class="quiz">
+<p><strong>Exercise 1</strong></p>
+<p>Create a R project</p>
+</div>
+</div>
+</div>
+<div id="r-coding-basics" class="section level1">
+<h1><span class="header-section-number">3</span> R coding basics</h1>
+<hr>
+<div id="create-an-object" class="section level2">
+<h2><span class="header-section-number">3.1</span> Create an object</h2>
+<p>All R statements where you create objects have the same form:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">object_name &lt;-<span class="st"> </span>value</a></code></pre></div>
+<p>You can create new objects using the “left arrow” &lt;-. It’s typed with a less-than sign &lt; followed by a hyphen -. It’s more officially known as the <em>assignment operator</em>.</p>
+<p>RStudio’s keyboard shortcut: Alt + - (the minus sign)</p>
+</div>
+<div id="name-an-object" class="section level2">
+<h2><span class="header-section-number">3.2</span> Name an object</h2>
+<p>Object names must start with a letter, and can only contain letters, numbers, _ and .</p>
+<div class="quiz">
+<p><strong>Exercise 2</strong></p>
+<p>What happens when you add these to your R script? <br></p>
+<p>To run a line of code in your script, click the cursor anywhere on that line and press CTRL+ENTER</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">n data &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">n<span class="op">*</span>data &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">n_data &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7">n.data &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9">data<span class="op">!</span><span class="st"> </span><span class="er">&lt;</span><span class="op">-</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb2-10" title="10"></a>
+<a class="sourceLine" id="cb2-11" title="11">1st_data &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+</div>
+</div>
+<div id="calling-functions" class="section level2">
+<h2><span class="header-section-number">3.3</span> Calling functions</h2>
+<p><br> R has a large collection of built-in functions that are called like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function_name</span>(<span class="dt">arg1 =</span> val1, <span class="dt">arg2 =</span> val2, ...)</a></code></pre></div>
+<p>For example:</p>
+<p>using sum() to take summation of all numbers in its arguments</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">a &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb4-2" title="2">b &lt;-<span class="st"> </span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb4-3" title="3">c &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">sum</span>(a,b,c)</a></code></pre></div>
+<p>To get the help of a function, type ?function_name or search from the ‘Plots and files’ Panel</p>
+<div class="quiz">
+<p><strong>Exercise 3</strong></p>
+<p>Use function seq() to create a sequence of numbers from 0 to 20 with increment 5.</p>
+</div>
+</div>
+<div id="basic-data-types" class="section level2">
+<h2><span class="header-section-number">3.4</span> Basic data types</h2>
+<p>Four common data types:</p>
+<div class="card">
+<p><strong>integer</strong>: numbers that do not contain decimal values, 2L <br> as.integer(), integer(), is.integer()</p>
+<p><strong>double or numeric</strong>: numbers with decimal values, 2.0, 5.2 <br> as.double(), double(), is.double()</p>
+<p><strong>character or string</strong>: alphabets or numbers enclosed by quotes, “hello”, “a” <br> as.character(), character(), is.character()</p>
+<p><strong>logical</strong>: a variable that can have a value of TRUE/T and FALSE/F <br> as.logical(), logical(), is.logical</p>
+</div>
+<p>R provides several functions to examine the type of objects, for example</p>
+<div class="card">
+<p>• class() <br></p>
+<p>• typeof() <br></p>
+<p>• <strong>str()</strong> <br></p>
+</div>
+</div>
+<div id="data-structure" class="section level2">
+<h2><span class="header-section-number">3.5</span> Data structure</h2>
+<p>Commonly used data structures in R:</p>
+<div class="card">
+<p>• vector <br></p>
+<p>• data frame <br></p>
+<p>• list <br></p>
+<p>• matrix <br></p>
+</div>
+<div id="vector" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Vector</h3>
+<center>
+<img src="image/vector.png" width="250" />
+</center>
+<p>Vector is the simplest type of data structure in R. It is a sequence of data elements of the <strong>same basic type</strong>. <br></p>
+<p>Create a vector using function <strong>c()</strong>: place the elements seperated by a comma between parentheses.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">conc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">80</span>, <span class="dv">40</span>, <span class="dv">8</span>) <span class="co"># numeric vector (use hash sign to add comments)</span></a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3">conc</a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">is.vector</span>(conc) <span class="co"># check if conc is a vector</span></a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="kw">length</span>(conc) <span class="co"># print the length of conc</span></a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="kw">str</span>(conc) <span class="co"># display overall info of conc</span></a>
+<a class="sourceLine" id="cb5-10" title="10"></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="kw">View</span>(conc) <span class="co"># invoke a spreadsheet-style data viewer</span></a>
+<a class="sourceLine" id="cb5-12" title="12"></a>
+<a class="sourceLine" id="cb5-13" title="13">pollutants &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ozone&quot;</span>, <span class="st">&quot;no2&quot;</span>, <span class="st">&quot;pm2.5&quot;</span>) <span class="co"># character vector</span></a></code></pre></div>
+<div class="quiz">
+<p><strong>Exercise 4</strong></p>
+<p>Create a logical vector with elements of TRUE, FALSE, FALSE and check its info</p>
+</div>
+</div>
+<div id="data-frame" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Data frame</h3>
+<center>
+<img src="image/dataframe.png" width="350" />
+</center>
+<p>A table in R is known as a data frame. We can think of it as a group of columns, where each column is made from a vector. Data frames in R have columns of data that are all the same length.</p>
+<p>Let’s make a data frame with two columns using <strong>data.frame()</strong>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">#create a talbe with two columns: item &amp; value</span></a>
+<a class="sourceLine" id="cb6-2" title="2">monitor_df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pollutant =</span> pollutants,</a>
+<a class="sourceLine" id="cb6-3" title="3">                          <span class="dt">design_value =</span> conc)</a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co"># print the monitor_df data frame to the console</span></a>
+<a class="sourceLine" id="cb6-6" title="6">monitor_df</a></code></pre></div>
+<p>View your data frame using: View()</p>
+<p>Use the $ sign after the name of your table to see the values in a column</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">monitor_df<span class="op">$</span>pollutant</a></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;monitor_df&#39; not found</code></pre>
+<div class="quiz">
+<p><strong>Exercise 5</strong></p>
+<p>Add a third column (above_naaqs) to monitor_df using the logical vector created in Exercise 4 View your data frame using str() and View()</p>
+</div>
+</div>
+<div id="matrix" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> Matrix</h3>
+<center>
+<p><img src="image/matrix.png" width="350" /></p>
+</center>
+<p>A matrix is two-dimensional data with same types</p>
+</div>
+<div id="list" class="section level3">
+<h3><span class="header-section-number">3.5.4</span> List</h3>
+<center>
+<p><img src="image/list.png" width="250" /></p>
+</center>
+<p>A list is a combination of elements with different types and lengths.</p>
+</div>
+</div>
+</div>
+<div id="recap" class="section level1">
+<h1><span class="header-section-number">4</span> Recap</h1>
+<div class="tip">
+<p><br></p>
+<ul>
+<li><p>creating an R project</p></li>
+<li><p>basic data types</p></li>
+<li><p>basic data structures</p></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
