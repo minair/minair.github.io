@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596478331701.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4183321522",
+    "id" : "900F8D13",
+    "lastKnownWriteTime" : 1596478340,
+    "last_content_update" : 1596478340093,
+    "path" : "D:/minair.github.io/_config.yml",
+    "project_path" : "_config.yml",
+    "properties" : {
+        "cursorPosition" : "0,13",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}
