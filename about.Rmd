@@ -1,5 +1,5 @@
 ---
-title: "Session1"
+title: "About Me"
 ---
 
-This is for session1
+Why I am awesome. 
