@@ -47,3 +47,39 @@ output:
 
 
 </div>
+
+
+<br><br><br>
+
+<br><br><br>
+
+<font size = "6">__Week 2__</font>
+
+<div style="float: left; width: 50%;">
+[Week 2-1](Week2-1.html)
+
+* tidy data
+
+* select()
+
+* arrange()
+
+* mutate()
+
+</div>
+
+<div style="float: right; width: 50%;">
+
+[Week 2-2](Week2-2.html)
+
+* relational operators
+
+* pipe operator
+
+* filter
+
+* summarize()
+
+* group_by
+
+</div>
