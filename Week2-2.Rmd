@@ -328,6 +328,6 @@ find the max ozone in each month for the SiteNum of 7554
 
 * summarize()
 
-* group_by
-
+* group_by()
 ::::
+
