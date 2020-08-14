@@ -76,7 +76,7 @@ output:
 
 * pipe operator
 
-* filter
+* filter()
 
 * summarize()
 
