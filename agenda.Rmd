@@ -80,6 +80,6 @@ output:
 
 * summarize()
 
-* group_by
+* group_by()
 
 </div>
