@@ -302,10 +302,3 @@ Convert the Temp colum from Fahrenheit to Celsius using T(°C) = (T(°F) - 32) *
 
 ::::
 
-
-
-
-
-
-
-
