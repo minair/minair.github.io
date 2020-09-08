@@ -1,0 +1,86 @@
+---
+title: "Learn R"
+compact-title: false
+output:
+  html_document:
+    css: css/camp_style.css
+    fontsize: 18pt
+    highlight: tango
+    monofont: Source Code Pro
+    number_sections: yes
+    self_contained: no
+    toc: yes
+    toc_depth: 1
+---
+
+<style type="text/css">
+
+h1.title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+</style>
+
+<br>
+
+
+::::{.card data-latex=""}
+
+<br>
+<font size = "5">__Welcome!__</font>
+
+Join us, learn R, and use your powers for good.
+
+::::
+
+<font size = "6" color = "steelblue">__Goals__</font>
+
+* __To build R programming skills for beginners__ 
+
+<center>
+![](image/scaryR.png){width=550px}
+
+</center>
+
+
+<font size = "6" color = "steelblue">__Objectives__</font>
+
+By the end of this training, you should be able to:
+
+* Master the use of RStudio interactive environment
+
+* Install R packages
+
+* Explore and understand how to use the R documents
+
+* Load data into R from various sources
+
+* Undertand different data types and data structures in R
+
+* Use the tidyverse packages to manipulate data frames
+
+* Understand how to create and manipulate dates in R
+
+* Create plots using ggplot2 
+
+* Write user-defined R functions
+
+* Use control statements
+
+* Write loops
+
+* Use apply family of functions to iterate funtions across data
+
+* Reshape data
+
+* Join tables
+
+* Identify and deal with missing data
+
+* Manipulate strings in R
+
+* Conduct basic data analysis using R
