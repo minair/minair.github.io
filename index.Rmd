@@ -42,7 +42,7 @@ Join us, learn R, and use your powers for good.
 * __To build R programming skills for beginners__ 
 
 <center>
-![](image/scaryR.jfif){width=550px}
+![](image/scaryR.png){width=550px}
 
 </center>
 
