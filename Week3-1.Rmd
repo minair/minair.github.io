@@ -1,0 +1,272 @@
+---
+title: "Week3-1"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# A New Week! {-}
+<hr class="hr2">
+
+<center>
+![](image/source.gif){width=350px}
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+
+# More data type: factor
+<hr>
+
+Factors are categorical variables that can be either numeric or character.  
+
+They can be ordered and are very useful for statistical analysis and for plotting.
+
+You use factor() to create a factor object
+
+```{r, eval=F}
+#create factor
+a <- factor(1)
+a
+class(a)
+
+b <- factor("x")
+b
+class(b)
+
+d <- c("low","middle","high","high")
+d
+
+factor_d <- factor(d)
+factor_d
+
+levels(factor_d)
+
+# change the order of levels
+order_d <- factor(d, levels = c("low","middle","high"))
+order_d
+
+levels(order_d)
+```
+
+
+
+
+# Plots with ggplot2
+<hr>
+
+<div style="float: left; width: 20%;">
+![](image/ggplot2_hex.png){width=150px}
+</div>
+
+<div style="float: right; width: 80%;">
+
+<br>
+
+<br>
+
+In data analysis, it's super important to visualize your data early and often. 
+
+ggplot2 is a plotting package that makes it simple to create complex plots from data frame.
+
+</div>
+
+
+<br><br><br><br>
+
+<br><br><br><br>
+
+__A ggplot has 3 ingredients: base, aesthetics, and layers__
+
+<br>
+
+## The base plot
+
+```{r, eval=F}
+library(tidyverse)
+
+ggplot(airquality)
+
+```
+
+
+We load the package of ggplot2, but the function to make the plot is only ggplot(). No 2. 
+
+<br>
+
+
+## The X, Y aesthetics
+
+The aesthetics assign the columns from the data that you want to use in the chart. This is where you set the X-Y variables that determine the dimensions of the plot.
+
+
+```{r, eval=F}
+
+ggplot(airquality, aes(x = Month, y = Ozone))
+
+```
+
+
+## The layers or geometries
+
+```{r, eval=F}
+
+ggplot(airquality, aes(x = factor(Month), y = Ozone)) + 
+  geom_boxplot()
+
+airquality %>% 
+  filter(Month == 8) %>%
+ggplot(aes(x = Day, y = Ozone)) + 
+  geom_point()
+
+
+```
+
+
+ggplot2 cheat sheet:
+
+https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
+
+
+ggplot2 document: 
+
+https://cran.r-project.org/web/packages/ggplot2/index.html
+
+<br>
+
+## Additional plot properties
+
+<br>
+
+```{r, eval=F}
+
+# Change labels
+ggplot(airquality, aes(x = factor(Month), y = Ozone)) + 
+  geom_boxplot() +
+  labs(title = "Boxplot of Ozone in NY, May - Sep 1973",
+       x = "Month",
+       y = "Ozone(ppb)")
+
+# add color
+ggplot(airquality, aes(x = Day, y = Ozone, color = factor(Month))) + 
+  geom_line()+
+  geom_point()
+
+# create subplots (rows)
+ggplot(airquality, aes(x = Day, y = Ozone, color = factor(Month))) + 
+  geom_line() +
+  facet_grid(factor(Month) ~ .) # facet into rows based on year
+
+# create subplots (columns)
+ggplot(airquality, aes(x = Day, y = Ozone, color = factor(Month))) + 
+  geom_line() +
+  facet_grid( . ~ factor(Month)) # facet into columns based on year
+
+# Add lines
+airquality %>%
+  group_by(Month) %>% 
+  summarise(ozone_avg = mean(Ozone, na.rm = T)) %>% 
+  ggplot(aes(x = factor(Month), y = ozone_avg)) +
+  geom_col(fill = "steel blue") + 
+  geom_hline(yintercept = 50, color = 'orange', size =2)+ # add horizontal line
+  scale_y_continuous(breaks = seq(0, 75, by = 10)) +
+  labs(title = "Monthly ozone plot", x = "Month", y="Ozone(ppb)")
+  
+#Themes
+  airquality %>%
+  group_by(Month) %>% 
+  summarise(ozone_avg = mean(Ozone, na.rm = T)) %>% 
+  ggplot(aes(x = factor(Month), y = ozone_avg)) +
+  geom_col(fill = "steel blue") + 
+  geom_hline(yintercept = 50, color = 'orange', size =2)+ # add horizontal line
+  scale_y_continuous(breaks = seq(0, 75, by = 10)) +
+  labs(title = "Monthly ozone plot", x = "Month", y="Ozone(ppb)")+
+  theme_classic()
+  
+
+  
+
+```
+
+<br>
+
+## Save plots
+
+You’ve made some plots you can be proud of, so let’s learn to save them so we can cherish them forever. There’s a function called ggsave to do just that. How do we ggsave our plots?
+
+```{r, eval=F}
+
+#  It defaults to saving the last plot that you displayed. 
+ggsave("./output/plot_name.png")
+
+
+# You can also save the named plot
+my_boxplot <- ggplot(airquality, aes(x = factor(Month), y = Ozone)) + 
+  geom_boxplot() +
+  labs(title = "Boxplot of Ozone in NY, May - Sep 1973",
+       x = "Month",
+       y = "Ozone(ppb)")
+
+ggsave("./output/my_boxplot.png", plot = my_boxplot)
+
+```
+
+
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise __
+
+Try to make a plot showing the daily ozone in August 2016 at sites 27-137-7001 and 27-137-7554 using the "ozone_samples_demo.csv" file 
+
+::::
+
+<br>
+
+
+
+# Recap
+<hr>
+
+::::{.tip data-latex=""}
+<br>
+
+* factor
+
+* ggplot()
+
+
+::::

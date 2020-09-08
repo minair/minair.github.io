@@ -1,0 +1,274 @@
+---
+title: "Week3-2"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# A New Week! {-}
+<hr class="hr2">
+
+<center>
+![](image/source.gif){width=350px}
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+
+
+# More data type: date-time
+<hr>
+
+
+<div style="float: left; width: 20%;">
+![](image/lubridate.png){width=150px}
+</div>
+
+<div style="float: right; width: 80%;">
+
+<br>
+
+<br>
+
+
+It’s about time! Lubridate makes working with dates much easier.
+
+We can find how much time has elapsed, add or subtract days, and find seasonal and day of a week averages.
+
+
+</div>
+
+
+<br><br><br><br>
+
+<br><br><br><br>
+
+
+## Load the lubridate package
+
+```{r, eval=F}
+
+library(lubridate)
+
+```
+
+
+## Convert character to a date
+
+```{r, eval=F}
+
+#Conver Month-Day-Year
+x <- "08-18-2020" # 08/18/2020
+
+x_date <- mdy(x)
+
+#Conver Day-Month-Year
+x <- "18-09-2020"
+
+x_date <- dmy(x)
+
+#convert Year-Month-day, guess which function to use?
+
+# convert Year-Month-day Hour:Minutes
+
+x <- "2020-08-24 8:35 AM"
+
+x_date <- ymd_hm(x)
+
+# convert Year-Month-day Hour:Minutes:Seconds
+
+x <- "2020-08-24 8:35:22 AM"
+
+x_date <- ymd_hms(x)
+
+```
+
+## Make date
+Sometimes we'll have years, months, days speaded across multiple columns. We can use make_date or make_datetime to create date or datetime. 
+
+```{r, eval=F}
+library(tidyverse)
+
+library(janitor)
+
+aq <- airquality %>% 
+  mutate(year = 1973) %>% 
+  clean_names()%>% # call clean_names from the janitor package 
+  rename(solar = solar_r)  # use rename function to modify the column name
+
+head(aq)
+
+aq <- aq %>% 
+  mutate(date = make_date(year, month, day))
+
+# with the date column, we can visualize ozone concentration across May - Sep
+
+aq %>% 
+  ggplot(aes(x=date, y=ozone)) +
+  geom_point() +
+  geom_line()
+
+
+```
+
+
+
+## Get date parts
+
+```{r, eval=F}
+
+# get year of a date object
+
+year(x_date)
+
+#get month
+
+month(x_date)
+
+#day of the month
+
+mday(x_date)
+
+#week of the year
+
+week(x_date)
+
+#day of the week as 1, 2,3 or Sunday, Monday, Tue
+
+wday(x_date, label = T)
+
+
+```
+
+
+# Join tables 
+<hr>
+
+<br>
+
+## left_join 
+
+![](image/leftjoin_scrap.png){width=500px}
+
+
+::::{.card data-latex=""}
+
+<br>
+
+<font size = "5">__left_join(scrap, convert, by = c("columns to join by"))__</font>
+
+::::
+
+<br>
+
+left_join() works like a zipper to combine 2 tables based on one or more variables. It’s called “left”-join because the entire table on the left side is retained.
+
+Anything that matches from the right table gets to join the party, but any rows that don’t have a matching ID will be ignored.
+
+<br>
+
+Remember our porg friends? We haven't share their names.
+
+![](image/leftjoin_porgs.png){width=750px}
+
+
+The joined result:
+
+
+![](image/porgs_and_names.png){width=600px}
+
+
+```{r, eval=F}
+
+band_members
+
+band_instruments
+
+band_members %>% 
+  left_join(band_instruments, by = "name")
+
+# when the join vaiables have different names
+
+band_instruments2
+
+band_members %>% 
+  left_join(band_instruments2, by = c("name" = "artist" ))
+
+```
+
+
+## Other joins
+
+right_join(): includes all rows in right table.
+
+inner_join(): includes all rows in both tables.
+
+full_join(): includes all rows in left or right table.
+
+```{r, eval=F}
+
+band_members %>% 
+  inner_join(band_instruments, by = "name")
+
+band_members %>% 
+  full_join(band_instruments, by = "name")
+
+
+```
+
+::::{.quiz data-latex="Exercise"}
+
+__Exercise __
+
+Install and load the nycflights13 package.
+
+Create a table that includes all flights and weather of their destination airports. 
+::::
+
+
+
+# Recap
+<hr>
+
+::::{.tip data-latex=""}
+<br>
+
+* date-time
+
+* join tables
+
+
+::::
