@@ -83,3 +83,28 @@ output:
 * group_by()
 
 </div>
+
+<br><br><br>
+
+<br><br><br>
+
+<font size = "6">__Week 3__</font>
+
+<div style="float: left; width: 50%;">
+[Week 3-1](Week3-1.html)
+
+* factor
+
+* ggplot()
+
+</div>
+
+<div style="float: right; width: 50%;">
+
+[Week 3-2](Week3-2.html)
+
+* date-time
+
+* join tables
+
+</div>
