@@ -37,32 +37,50 @@ Join us, learn R, and use your powers for good.
 
 ::::
 
-[<font size = "16" color = "steelblue">__Agenda__</font>](agenda.html)
+<font size = "6" color = "steelblue">__Goals__</font>
 
-<div style="float: left; width: 50%;">
-[![](image/Rstudio_ex.png){width=350px}](agenda.html)
-</div>
+* __To build R programming skills for beginners__ 
 
+<center>
+![](image/scaryR.jfif){width=550px}
 
-<div style="float: right; width: 50%;">
-
-[Week 1-1](Week1-1.html)
-
-  * creating an R project
-
-  * basic data types
-  
-  * basic data structures
-
-[Week 1-2](Week1-2.html)
- 
-  * packages
-
-  * read and write files: plain text, excel
-
-  * view data frame info
-
-  * missing values and duplicated values
+</center>
 
 
-</div>
+<font size = "6" color = "steelblue">__Objectives__</font>
+
+By the end of this training, you should be able to:
+
+* Master the use of RStudio interactive environment
+
+* Install R packages
+
+* Explore and understand how to use the R documents
+
+* Load data into R from various sources
+
+* Undertand different data types and data structures in R
+
+* Use the tidyverse packages to manipulate data frames
+
+* Understand how to create and manipulate dates in R
+
+* Create plots using ggplot2 
+
+* Write user-defined R functions
+
+* Use control statements
+
+* Write loops
+
+* Use apply family of functions to iterate funtions across data
+
+* Reshape data
+
+* Join tables
+
+* Identify and deal with missing data
+
+* Manipulate strings in R
+
+* Conduct basic data analysis using R
