@@ -51,36 +51,36 @@ Join us, learn R, and use your powers for good.
 
 By the end of this training, you should be able to:
 
-* Master the use of RStudio interactive environment
+* <font color = "grey">Master the use of RStudio interactive environment</font>
 
-* Install R packages
+* <font color = "grey">Install R packages</font>
 
-* Explore and understand how to use the R documents
+* <font color = "grey">Explore and understand how to use the R documents</font>
 
-* Load data into R from various sources
+* <font color = "grey">Load data into R from various sources</font>
 
-* Undertand different data types and data structures in R
+* <font color = "grey">Undertand different data types and data structures</font>
 
-* Use the tidyverse packages to manipulate data frames
+* <font color = "grey">Use the tidyverse packages to manipulate data frames</font>
 
-* Understand how to create and manipulate dates in R
+* <font color = "grey">Understand how to create and manipulate dates</font>
 
-* Create plots using ggplot2 
+* <font color = "grey">Create plots using ggplot2 </font>
 
-* Write user-defined R functions
+* __Write user-defined functions__
 
-* Use control statements
+* <font color = "steelblue">__Use control statements__</font>
 
-* Write loops
+* <font color = "steelblue">__Write loops__</font>
 
-* Use apply family of functions to iterate funtions across data
+* __Use apply family of functions to iterate funtions across data__
 
-* Reshape data
+* __Reshape data__
 
-* Join tables
+* <font color = "grey">Join tables</font>
 
-* Identify and deal with missing data
+* <font color = "grey">Identify and deal with missing data</font>
 
-* Manipulate strings in R
+* __Manipulate strings__
 
-* Conduct basic data analysis using R
+* __Conduct basic data analysis using R__

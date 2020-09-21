@@ -108,3 +108,30 @@ output:
 * join tables
 
 </div>
+
+<br><br><br>
+
+<br><br><br>
+
+<font size = "6">__Week 4__</font>
+
+<div style="float: left; width: 50%;">
+[Week 4-1](Week4-1.html)
+
+* column names
+
+* control structures: if - else, ifelse(), case_when()
+
+</div>
+
+<div style="float: right; width: 50%;">
+
+[Week 4-2](Week4-2.html)
+
+* subset a vector
+
+* subset a dataframe
+
+* for loops
+
+</div>
