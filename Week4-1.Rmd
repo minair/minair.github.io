@@ -1,0 +1,295 @@
+---
+title: "Week4-1"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# A New Week! {-}
+<hr class="hr2">
+
+<center>
+![](image/source.gif){width=350px}
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+
+# Colum names
+<hr>
+
+## rename()
+
+The rename(new_name = old_name) function in dplyr package is designed to change the name of a dataframe
+
+```{r, eval=F}
+
+library(tidyverse)
+
+colnames(airquality)
+
+airquality %>% 
+  rename(Solar_R = Solar.R,
+         Temp_F = Temp)
+
+```
+
+## clean_names()
+
+The clean_names() function in "janitor" package modifies column names consisit of number, letters, and "_".
+
+```{r, eval=F}
+library(janitor)
+
+colnames(airquality)
+
+airquality %>% 
+  clean_names()
+
+```
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise 1 __
+
+import data from the "ozone_samples_demo.csv" file and clean the column names
+
+::::
+
+
+# Control structures
+<hr>
+
+Control structures in R allow you to control the flow of execution of a series of R expressions.
+
+
+The if and else combination is probably the most commonly used control structure in R. It is a great tool to test a condition and take actions depending on whether the condition is TRUE or FALSE.
+
+<br>
+
+## if-else
+
+Use if and else statements to test one condition.
+
+```{r, eval=F}
+
+# basic if-else structure
+
+if (test) {  # test a condition in the parentheses
+  #do something in the braces when the test is true   
+} else {          
+  #do something else when the test is false
+}
+
+
+# try a simple example
+x <- runif(1, 0, 10) # create a random number between 0-10
+
+if (x > 5) {
+  y <- 10
+} else {
+  y <- 0
+}
+
+```
+
+You can just use if statement. 
+
+```{r, eval=F}
+
+if (test) {
+  # do something
+} 
+
+x <- runif(1, 0, 10) # create a random number between 0-10
+
+y <- 2
+
+if (x > 5) {
+  y <- 10
+} 
+
+```
+
+You can test a series of conditions
+
+
+```{r, eval=F}
+if (test1) {  
+  #do something    
+} else if (test2){          
+  #do something different      
+} else {
+  # do something different
+}
+
+score <- 85
+
+if (score >= 90) {
+  grade <- "A"
+}else if (score >= 80) {
+  grade <- "B"
+}else if (score >= 70){
+  grade <- "C"
+}else {
+  grade <- "F"
+}
+
+```
+
+
+## ifelse()
+
+The ifelse() funtion is a shorthand form of the if-else statement. It can take a logical vector for testing.
+
+ifelse(test, do something when test is TRUE, do something when test is FALSE)
+
+```{r, eval=F}
+
+#Example
+
+x <- c(5,8,2,9)
+
+# test if the modulus (remainder from division) of x is zero
+ifelse(x %% 2 == 0, "even", "odd") 
+
+#what happen if we use if - else statement
+if (x %% 2 == 0) {
+  print("even")
+} else {
+  print("odd")
+}
+
+
+```
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise 2 __
+
+x <- runif(10, -20, 20)
+
+with the given vector x, write R code to tell if each element is negative or positive. <br>
+
+Treat zero as positive. 
+
+::::
+
+
+ifelse() and mutate() make a powerful combination in creating new columns. 
+
+
+```{r, eval=F}
+
+# if we want to compare ozone between weekday and weekend
+
+library(lubridate)
+
+airquality %>% 
+  mutate(year = 1973, # create a year column
+         date = make_date(year, Month, Day), # create date
+         wday = wday(date, label = T), # create day of a week
+         week = ifelse(wday %in% c("Sun", "Sat"), "weekend", "weekday")) %>%  # seperate weekend and weekday
+  ggplot(aes(x = week, y = Ozone)) +
+  geom_boxplot() +
+  facet_grid(. ~ factor(Month))
+
+
+```
+
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise 3 __
+
+Calculate and compare mean ozone concentration between weekdays and weekends using the data in exercise 1 
+
+::::
+
+
+## case_when()
+
+The case_when() function allows you to work on multiple tests. It also takes the logical vector for testing.
+
+case_when(test1 ~ do something when test1 is true,
+          test2 ~ do something different when test2 is true)
+
+
+```{r, eval=F}
+
+score <- runif(10, 60, 100)
+
+grade <- case_when(score >= 90 ~ "A",
+                   score >= 80 ~ "B",
+                   score >= 70 ~ "C",
+                   score >= 60 ~ "D")
+
+# if we want to compare ozone among seasonas
+airquality %>% 
+  mutate(season = case_when(Month %in% c(3, 4, 5) ~ "spring",
+                            Month %in% c(6, 7, 8) ~ "summer",
+                            Month %in% c(9, 10, 11) ~ "fall")) %>% 
+  ggplot(aes(x = season, y=Ozone))+
+  geom_boxplot()
+  
+#factor(season, levels = c("spring","summer","fall"))
+```
+
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise 4 __
+
+Calculate and compare mean ozone concentration among seasons using the data in exercise 1 
+
+::::
+
+<br>
+
+
+
+# Recap
+<hr>
+
+::::{.tip data-latex=""}
+<br>
+
+* column names
+
+* control structures: if - else, ifelse(), case_when()
+
+
+::::
