@@ -48,7 +48,7 @@ Let's go, Simba, Pumbaa, and Timon!
 <br>
 
 
-# Colum names
+# Column names
 <hr>
 
 ## rename()
