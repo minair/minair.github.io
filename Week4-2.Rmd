@@ -170,7 +170,7 @@ median(df$a)
 median(df$a)
 median(df$a)
 
-# Too many copy and paste. Instead, we can a for loop:
+# Too many copy and paste. Instead, we can write a for loop:
 
 median_df <- numeric(ncol(df))  # allocate sufficient space for the output
 
