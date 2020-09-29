@@ -116,6 +116,7 @@ output:
 <font size = "6">__Week 4__</font>
 
 <div style="float: left; width: 50%;">
+
 [Week 4-1](Week4-1.html)
 
 * column names
@@ -133,5 +134,27 @@ output:
 * subset a dataframe
 
 * for loops
+
+</div>
+
+<font size = "6">__Week 5__</font>
+
+<div style="float: left; width: 50%;">
+
+[Week 5-1](Week5-1.html)
+
+* some built-in functions for numbers
+
+* write functions
+
+</div>
+
+<div style="float: right; width: 50%;">
+
+[Week 5-2](Week5-2.html)
+
+* 
+
+* 
 
 </div>
