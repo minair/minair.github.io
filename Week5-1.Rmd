@@ -1,0 +1,222 @@
+---
+title: "Week5-1"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# A New Week! {-}
+<hr class="hr2">
+
+<center>
+![](image/source.gif){width=350px}
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+# Some built-in functions for numbers
+<hr>
+
+Almost everthing in R is done through functions. <br>
+
+Here are some commonly used functions that work with numbers.
+
+## Numeric functions
+
+::::{.card data-latex=""}
+<br>
+__abs(x)__   &nbsp; &nbsp; &nbsp; absolute value
+
+__sqrt(x)__  &nbsp; &nbsp; &nbsp;  square root -- x^(1/2), x**(1/2)
+
+__round(x, digits = n)__  &nbsp; &nbsp; &nbsp;   round x to n decimal digits
+
+__log(x)__    &nbsp; &nbsp; &nbsp;               natural logarithm (base e)
+
+__log10(x)__   &nbsp; &nbsp; &nbsp;              common logarith (base 10)
+
+__exp(x)__     &nbsp; &nbsp; &nbsp;              expoentials e^x
+
+::::
+
+## Statistical functions
+
+::::{.card data-latex=""}
+<br>
+__mean(x, na.rm = FALSE)__  &nbsp; &nbsp; &nbsp; mean of x
+
+__median(x)__    &nbsp; &nbsp; &nbsp;            median of x
+
+__sd(x)__     &nbsp; &nbsp; &nbsp;               standard deviation of x
+
+__quantile(x, probs)__  &nbsp; &nbsp; &nbsp;     quantiles of x with probability
+
+__range(x)__    &nbsp; &nbsp; &nbsp;             smallest to largest values
+
+__max(x)__      &nbsp; &nbsp; &nbsp;             maximum
+
+__min(x)__      &nbsp; &nbsp; &nbsp;             minimum
+
+__sum(x)__      &nbsp; &nbsp; &nbsp;             summation
+
+::::
+
+# Write functions
+<hr>
+
+One of the great strengths of R is user can write customized functions. 
+
+In general, if you find yourself doing a lot of cutting and pasting, that’s usually a good sign to write a function.
+
+Functions are defined using the function() and are stored as R objects just like anything else. 
+
+```{r, eval=F}
+# Basic structure of creating a function 
+function_name <- function(arguments) {
+         function body
+ }
+
+# A simple example: convert Fahrenheit to Celsius
+f_to_c <- function(temp_F) {
+  temp_C <- (temp_F - 32) * 5 / 9
+  #return(temp_C),
+}
+
+# In R, the return value of a function is always the very last expression that is evaluated
+print(f_to_c(32))
+
+airquality %>% 
+  mutate(temp_c = f_to_c(Temp))
+```
+
+
+## Argument matching
+
+R functions arguments can be matched by position or by name.<br> 
+
+Position matching just means that R assigns the first value to the first argument, the second value to second argument. 
+
+```{r, eval = F}
+obtain_math = function(a, b){
+  a*a + b
+}
+
+print(f(a = 1, b = 2)) # arguments matched by name
+
+print(f(1, 2)) # arguments matched by position
+
+print(f(2, 1))
+
+```
+
+## Argument with a default value
+
+We must provide the argument values in the obtain_match() function if defualt values are not available
+
+```{r, eval = F}
+obtain_math(a = 1) # what happen if the value of b is missing?
+
+```
+
+We can modify the function to avoid such error by providing default values for arguments
+```{r, eval = F}
+obtain_math_v1 <- function(a, b=2){
+  a*a + b
+}
+
+obtain_math_v1(1)
+```
+
+## Apply functions
+
+You can create and use functions inside your script. 
+
+```{r, eval = F}
+#create a function to convert a month to season
+obtain_season <- function(month){
+    case_when(month %in% c(12, 1, 2) ~ "winter",
+              month %in% c(3, 4, 5) ~ "spring",
+              month %in% c(6, 7, 8) ~ "summer",
+              month %in% c(9, 10, 11) ~ "fall")
+}
+
+obtain_season(7)
+
+#apply the obtain_season() function 
+library(tidyverse)
+
+airquality %>% 
+  mutate(season = obtain_season(Month))
+
+```
+
+You can also save your functions in a different script and use them again and again. 
+
+```{r, eval=F}
+# we created a ObtainSeason() function and saved it in the my_functions.R
+source('./script/my_functions.R') #use source() to read R code
+class(ObtainSeason)
+
+airquality %>% 
+  mutate(season = ObtainSeason(Month))
+
+```
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise __
+
+Write a function using year, month and day to obtain weekday/weekend: obtain_weekend() 
+
+<br>
+Apply the function on airquality dataset
+
+::::
+
+
+
+# Recap
+<hr>
+
+::::{.tip data-latex=""}
+<br>
+
+* Some built-in functions for numbers
+
+* Write functions
+
+
+::::
