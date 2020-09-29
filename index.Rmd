@@ -67,11 +67,11 @@ By the end of this training, you should be able to:
 
 * <font color = "grey">Create plots using ggplot2 </font>
 
-* __Write user-defined functions__
+* <font color = "steelblue">__Write user-defined functions__</font>
 
-* <font color = "steelblue">__Use control statements__</font>
+* <font color = "grey">Use control statements</font>
 
-* <font color = "steelblue">__Write loops__</font>
+* <font color = "grey">Write loops</font>
 
 * __Use apply family of functions to iterate funtions across data__
 
