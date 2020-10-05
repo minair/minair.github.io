@@ -153,8 +153,8 @@ output:
 
 [Week 5-2](Week5-2.html)
 
-* 
+* lists
 
-* 
+* apply family of functions
 
 </div>
