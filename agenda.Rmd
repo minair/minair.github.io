@@ -84,6 +84,7 @@ output:
 
 </div>
 
+
 <br><br><br>
 
 <br><br><br>
@@ -137,6 +138,10 @@ output:
 
 </div>
 
+<br><br><br>
+
+<br><br><br>
+
 <font size = "6">__Week 5__</font>
 
 <div style="float: left; width: 50%;">
@@ -156,5 +161,33 @@ output:
 * lists
 
 * apply family of functions
+
+</div>
+
+<br><br><br>
+
+<br><br><br>
+
+<font size = "6">__Week 6__</font>
+
+<div style="float: left; width: 50%;">
+
+[Week 6-1](Week6-1.html)
+
+* bind data frames
+
+* pivot_longer()
+
+* pivot_wider
+
+</div>
+
+<div style="float: right; width: 50%;">
+
+[Week 6-2](Week6-2.html)
+
+* 
+
+* 
 
 </div>

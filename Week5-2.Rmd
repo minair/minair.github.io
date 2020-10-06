@@ -1,5 +1,5 @@
 ---
-title: "Week2-1"
+title: "Week5-2"
 output: 
   html_document:
     highlight: tango
@@ -65,7 +65,7 @@ x <- list(1, "a", TRUE)
 
 class(x)
 
-x[2] # subset a list, retun a list
+x[2] # subset a list, return a list
 
 x[[2]] # return the simpliest possible data structure
 

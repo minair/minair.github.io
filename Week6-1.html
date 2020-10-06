@@ -11,7 +11,7 @@
 
 
 
-<title>Week5-2</title>
+<title>Week6-1</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -449,15 +449,15 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Week5-2</h1>
+<h1 class="title toc-ignore">Week6-1</h1>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#a-new-week">A New Week!</a></li>
-<li><a href="#list---another-data-structure"><span class="toc-section-number">1</span> list - another data structure</a></li>
-<li><a href="#apply-family-of-functions"><span class="toc-section-number">2</span> apply family of functions</a></li>
+<li><a href="#bind-multiple-data-frames"><span class="toc-section-number">1</span> bind multiple data frames</a></li>
+<li><a href="#reshape-data"><span class="toc-section-number">2</span> reshape data</a></li>
 <li><a href="#recap"><span class="toc-section-number">3</span> Recap</a></li>
 </ul>
 </div>
@@ -476,125 +476,80 @@ $(document).ready(function () {
 <hr class="hr2">
 <p><br></p>
 </div>
-<div id="list---another-data-structure" class="section level1">
-<h1><span class="header-section-number">1</span> list - another data structure</h1>
+<div id="bind-multiple-data-frames" class="section level1">
+<h1><span class="header-section-number">1</span> bind multiple data frames</h1>
 <hr>
-<p>List is a special type of vector. It is not limited to single data type. A list can contain any mixture of data types even mixtures of data structures.</p>
+<div id="bind_cols" class="section level2">
+<h2><span class="header-section-number">1.1</span> bind_cols()</h2>
+<p>Bind multiple data frames by column.</p>
+<p>All data frames must have the same number of rows.</p>
 <center>
-<p><img src="image/list.png" width="200" /></p>
+<p><img src="image/bind_cols.png" width="450" /></p>
 </center>
-<p>We use the list() to create a list.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="ot">TRUE</span>) </a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-2" title="2"></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">class</span>(x)</a>
-<a class="sourceLine" id="cb1-4" title="4"></a>
-<a class="sourceLine" id="cb1-5" title="5">x[<span class="dv">2</span>] <span class="co"># subset a list, return a list</span></a>
-<a class="sourceLine" id="cb1-6" title="6"></a>
-<a class="sourceLine" id="cb1-7" title="7">x[[<span class="dv">2</span>]] <span class="co"># return the simpliest possible data structure</span></a>
-<a class="sourceLine" id="cb1-8" title="8"></a>
-<a class="sourceLine" id="cb1-9" title="9">x1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="fl">0.6</span>, <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>))</a>
-<a class="sourceLine" id="cb1-10" title="10"></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co"># how to extract element &#39;a&#39; in the list x1 </span></a></code></pre></div>
-<p>We can also create an empty list with predefined length with the vector() function</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">y &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dt">length =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">length</span>(y)</a></code></pre></div>
-<p>Vectors can be converted to lists using the as.list() function</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">class</span>(z)</a>
-<a class="sourceLine" id="cb3-4" title="4"></a>
-<a class="sourceLine" id="cb3-5" title="5">z &lt;-<span class="st"> </span><span class="kw">as.list</span>(z)</a>
-<a class="sourceLine" id="cb3-6" title="6"></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="kw">class</span>(z)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" title="3">one &lt;-<span class="st"> </span>airquality[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb1-4" title="4">two &lt;-<span class="st"> </span>airquality[<span class="dv">9</span><span class="op">:</span><span class="dv">12</span>, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">bind_cols</span>(one, two)</a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co"># rows are matched by position.</span></a></code></pre></div>
 </div>
-<div id="apply-family-of-functions" class="section level1">
-<h1><span class="header-section-number">2</span> apply family of functions</h1>
+<div id="bind_rows" class="section level2">
+<h2><span class="header-section-number">1.2</span> bind_rows()</h2>
+<p>Bind multiple data frame by rows.</p>
+<center>
+<p><img src="image/bind_rows.png" width="450" /></p>
+</center>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">one &lt;-<span class="st"> </span>airquality[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">two &lt;-<span class="st"> </span>airquality[<span class="dv">9</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">three &lt;-<span class="st"> </span>airquality[<span class="dv">11</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="co"># a dataframe with four columns</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">bind_rows</span>(one, two, three)</a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co"># Columns are matched by name. Missing columns will be filled with NA. </span></a></code></pre></div>
+</div>
+</div>
+<div id="reshape-data" class="section level1">
+<h1><span class="header-section-number">2</span> reshape data</h1>
 <hr>
-<p>R has some functions which implement looping in a compact form to make your code easier to write and to read.</p>
-<p><strong>lappy()</strong>: takes a vector or list and applys a function on each item element.</p>
-<p>sapply(): Same as lapply but try to simplify the result</p>
-<p>apply(): takes a data frame and applys a function on each row or each column of the input.</p>
-<p><br></p>
-<div id="lapply" class="section level2">
-<h2><span class="header-section-number">2.1</span> lapply()</h2>
-<p>This function does the following series of operations:</p>
-<ol style="list-style-type: decimal">
-<li><p>it loops over a list, iterating over each element</p></li>
-<li><p>it applies a function to each element of the list</p></li>
-<li><p>returns a <strong>list</strong></p></li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># the basic usage of lappy() function</span></a>
-<a class="sourceLine" id="cb4-2" title="2"></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="kw">lapply</span>(X, FUN, ...)</a>
-<a class="sourceLine" id="cb4-4" title="4"></a>
-<a class="sourceLine" id="cb4-5" title="5">X<span class="op">:</span><span class="st"> </span>a vector or a <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7">FUN<span class="op">:</span><span class="st"> </span>the <span class="cf">function</span> to be applied</a>
-<a class="sourceLine" id="cb4-8" title="8"></a>
-<a class="sourceLine" id="cb4-9" title="9">...<span class="op">:</span><span class="st"> </span>optional arguments to FUN</a>
-<a class="sourceLine" id="cb4-10" title="10">)</a>
-<a class="sourceLine" id="cb4-11" title="11"></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="co"># calculate the mean value of each element of list x</span></a>
-<a class="sourceLine" id="cb4-13" title="13"></a>
-<a class="sourceLine" id="cb4-14" title="14">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">7</span>))</a>
-<a class="sourceLine" id="cb4-15" title="15"></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="kw">print</span>(x)</a>
-<a class="sourceLine" id="cb4-17" title="17"></a>
-<a class="sourceLine" id="cb4-18" title="18">y &lt;-<span class="st"> </span><span class="kw">lapply</span>(x, mean)</a>
-<a class="sourceLine" id="cb4-19" title="19"></a>
-<a class="sourceLine" id="cb4-20" title="20"><span class="kw">class</span>(y)</a></code></pre></div>
-<p>Here we are passing mean() as an argument to lapply(). When we pass a function to another function, we do not need to include () like we call a function.</p>
-<p>Any arguments in the … argument will get passed down to the function that applied to the list.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">lapply</span>(x, mean, <span class="dt">na.rm =</span> T)</a></code></pre></div>
-<p>Sometime, you will see lappy() and its friends use anonymous functions. These are functions are generated inside lapply(). Once the call to lapply() is finished, the function disappears.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># extract the 2nd value of each elements</span></a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3">test &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">5</span>), <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">5</span>), <span class="dt">z =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>, <span class="st">&#39;e&#39;</span> ))</a>
-<a class="sourceLine" id="cb6-4" title="4"></a>
-<a class="sourceLine" id="cb6-5" title="5">test[[<span class="dv">1</span>]][<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb6-6" title="6">test[[<span class="dv">2</span>]][<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb6-7" title="7">test[[<span class="dv">3</span>]][<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb6-8" title="8"></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="kw">lapply</span>(test, <span class="cf">function</span>(x){x[<span class="dv">2</span>]})</a>
-<a class="sourceLine" id="cb6-10" title="10"></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="co"># using the anonymous function has the same result as the following script: </span></a>
-<a class="sourceLine" id="cb6-12" title="12"></a>
-<a class="sourceLine" id="cb6-13" title="13">f &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb6-14" title="14">  x[<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb6-15" title="15">}</a>
-<a class="sourceLine" id="cb6-16" title="16"></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="kw">lapply</span>(test, f)</a></code></pre></div>
-<p>If the function is going to be used a lot in other parts of your code, you might want to define it separately. But if it’s going to be used just for this call to lapply(), then it’s probably simpler to use an anonymous function.</p>
+<div id="pivot_longer" class="section level2">
+<h2><span class="header-section-number">2.1</span> pivot_longer()</h2>
+<p>We use this function to increase the number of rows and decrease the number of columns.</p>
+<center>
+<img src="image/pivot_longer.png" width="450" />
+</center>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># create a data frame </span></a>
+<a class="sourceLine" id="cb3-2" title="2">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">site =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb3-3" title="3">                 <span class="dt">jan =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb3-4" title="4">                 <span class="dt">feb =</span> <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb3-5" title="5">                 <span class="dt">mar =</span> <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7">long_df &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span>site, <span class="dt">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span> )</a>
+<a class="sourceLine" id="cb3-9" title="9"></a>
+<a class="sourceLine" id="cb3-10" title="10">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="st">  </span><span class="kw">pivot_longer</span>(jan<span class="op">:</span>mar, <span class="dt">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;value&quot;</span>)</a></code></pre></div>
+<p>cheatsheet of tidyr</p>
+<p><a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf" class="uri">https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf</a></p>
 <div class="quiz">
 <p><strong>Exercise </strong></p>
-<p>Use lapply() to seperate and save airquality data by month.</p>
+<p>Apply the pivot_longer() function to reshape the billboard dataset</p>
 </div>
 </div>
-<div id="sapply" class="section level2">
-<h2><span class="header-section-number">2.2</span> sapply()</h2>
-<p>The sapply() function behaves similarly to lapply(); the only real difference is in the return value.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">test &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb7-2" title="2"></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">lapply</span>(test, mean)</a>
-<a class="sourceLine" id="cb7-4" title="4"></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="kw">sapply</span>(test, mean)</a></code></pre></div>
-<p><br></p>
+<div id="pivot_wider" class="section level2">
+<h2><span class="header-section-number">2.2</span> pivot_wider()</h2>
+<p>This function is the inverse transformation of pivot_longer().</p>
+<center>
+<img src="image/pivot_wider.png" width="450" />
+</center>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">pivot_wider</span>(long_df, <span class="dt">names_from =</span> month, <span class="dt">values_from =</span> value)</a></code></pre></div>
+<div class="quiz">
+<p><strong>Exercise </strong></p>
+<p>Use the pivot_wider() function to reshape the us_rent_income dataset</p>
 </div>
-<div id="apply" class="section level2">
-<h2><span class="header-section-number">2.3</span> apply()</h2>
-<p>This function takes a matrix or data frame and performs a function on each row or each column of the input individually (1 for rows, 2 for columns).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">a &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">c1 =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">c2 =</span> <span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">c3 =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="ot">NA</span>))</a>
-<a class="sourceLine" id="cb8-2" title="2"></a>
-<a class="sourceLine" id="cb8-3" title="3">a</a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="co"># row products</span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="kw">apply</span>(a, <span class="dv">1</span>, <span class="cf">function</span>(x){<span class="kw">prod</span>(x, <span class="dt">na.rm =</span> T)})</a>
-<a class="sourceLine" id="cb8-7" title="7"></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co"># column products</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="kw">apply</span>(a, <span class="dv">2</span>, <span class="cf">function</span>(x){<span class="kw">prod</span>(x, <span class="dt">na.rm =</span> T)})</a></code></pre></div>
-<p>Usually there are better alternatives for column-wise operations on data frames.</p>
-<p><br></p>
 </div>
 </div>
 <div id="recap" class="section level1">
@@ -603,8 +558,9 @@ $(document).ready(function () {
 <div class="tip">
 <p><br></p>
 <ul>
-<li><p>list</p></li>
-<li><p>apply family of functions</p></li>
+<li><p>bind data frames</p></li>
+<li><p>pivot_longer()</p></li>
+<li><p>pivot_wider()</p></li>
 </ul>
 </div>
 </div>
