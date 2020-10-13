@@ -186,8 +186,10 @@ output:
 
 [Week 6-2](Week6-2.html)
 
-* 
+* string basics
 
-* 
+* regular expressions
+
+* match strings
 
 </div>

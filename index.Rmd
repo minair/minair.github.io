@@ -73,14 +73,14 @@ By the end of this training, you should be able to:
 
 * <font color = "grey">Write loops</font>
 
-* <font color = "steelblue">__Use apply family of functions to iterate funtions across data__</font>
+* <font color = "grey">Use apply family of functions to iterate funtions across data</font>
 
-* <font color = "steelblue">__Reshape data__</font>
+* <font color = "grey">Reshape data</font>
 
 * <font color = "grey">Join tables</font>
 
 * <font color = "grey">Identify and deal with missing data</font>
 
-* __Manipulate strings__
+* <font color = "steelblue">__Manipulate strings__</font>
 
-* __Conduct basic data analysis using R__
+* <font color = "steelblue">__Conduct basic data analysis using R__</font>

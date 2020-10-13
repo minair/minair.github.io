@@ -1,0 +1,55 @@
+---
+title: "Acknowledgment"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+
+We thank Dorian Kvale (MPCA), Kristie Ellickson (MPCA) and Derek Nagel (MPCA) for inspiring this R training tutorial and sharing their training materials.
+
+<br><br>
+
+::::{.card data-latex=""}
+
+Some useful learning resources:
+
+* MPCA Tidy Tuesday: https://github.com/MPCA-data/tidytuesdays#tidytuesdays
+
+* MPCA R training website: https://itep-r.netlify.app/page/day1_am.html
+
+* HarvardX's Data Science Professional Certificate: 
+https://www.edx.org/professional-certificate/harvardx-data-science
+
+* Data Analysis with R on udacity:
+https://www.udacity.com/course/data-analysis-with-r--ud651
+
+* Data scientist with R on Datacamp: https://www.datacamp.com 
+
+::::
+
+
+ 
+
+

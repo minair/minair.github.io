@@ -45,6 +45,12 @@ navbar:
       menu:
         - text: "Week 6-1"
           href: Week6-1.html
+          
+        - text: "Week 6-2"
+          href: Week6-2.html
+      
+    - text: "Acknowledgment"
+      href: acknowledgment.html
 
 
 output:

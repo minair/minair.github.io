@@ -1,0 +1,298 @@
+---
+title: "Week6-2"
+output: 
+  html_document:
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+    
+
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+
+knitr::opts_chunk$set(error=TRUE, color = NULL, message = FALSE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_color.R")
+source("https://raw.githubusercontent.com/MPCA-air/r-modules/master/R/hook_add_mod.R")
+
+```
+
+# A New Week! {-}
+<hr class="hr2">
+
+<center>
+![](image/source.gif){width=350px}
+</center>
+
+<br>
+
+We aren't computer scientists and that's okay! 
+
+We make lots of mistakes. Mistakes are funny. You can laugh with us.
+
+Let's go, Simba, Pumbaa, and Timon!
+
+<br><br><hr class="hr2">
+
+<br>
+
+
+
+# string basics
+<hr>
+
+
+We will focus on the stringr package for string manipulation. 
+
+All functions from stringr start with __str___. 
+
+<center>
+![](image/stringr1.png){width=150px}
+
+</center>
+
+stringr cheatsheet
+
+https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_strings.pdf
+
+<br>
+
+## string length
+
+Use str_length() to find the number of characters in a string. 
+
+```{r, eval=F}
+
+library(tidyverse)
+
+x <- c("a", "R is fun", NA)
+
+str_length(x)
+
+length(x)
+
+str_count(x)
+```
+
+## combine strings
+
+Use str_c() to combine two or more strings
+
+```{r, eval=F}
+
+a <- 1
+
+str_c("./output/aq-", a, ".csv")
+
+str_c(10, 7, 2020, sep = "/")
+
+# if input is a vector
+x <- c("a", "b")
+
+str_c(x, collapse = "") # specify collapse to combine input vectors into a single string
+
+# two or more vectors
+y <- c("1", "2", "3", "4") 
+
+str_c(x, y) # the short vector is recycled to the length of the longest
+
+```
+
+
+## subsetting strings
+
+Use str_sub() to extract parts of a string based on index.
+
+```{r, eval=F}
+
+x <- fruit[c(1, 16, 10)]
+
+str_sub(x, 1, 3)
+
+str_sub(x, -3, -1)
+
+```
+
+## convert case
+
+str_to_lower()  &   str_to_upper()
+
+```{r, eval=F}
+
+str_to_lower(x)
+
+str_to_upper(x)
+```
+
+## sort strings
+
+str_sort()
+```{r, eval=F}
+
+str_sort(x)
+
+```
+
+
+# regular expressions
+<hr>
+
+Regular expressions, or regexps, are a concise language for describing patterns in strings.
+
+In R, we write regular expressions as strings.    
+
+We will use str_view() to learn regular expression
+
+```{r, eval=F}
+
+# install and load the htmlwidgets package 
+install.packages("htmlwidgets") 
+library(htmlwidgets)
+
+# The simplest patterns match exact characters:
+str_view(x, 'rry') # 'rry' is the pattern
+
+# The next is special characters.
+# For example, dot . matches any character (except a newline):
+str_view(x, ".e.")
+
+# But if . matches any character, how do you match the character .?
+
+# Regexps use the backslash \ to escape special behaviour. So to match ., you need the \.
+
+# However, whenever a \ appears in a regexp, you must write it as \\ in the string that represent the regexp. 
+
+str_view(c("abc", "a.c", "bef"), "\.")
+
+str_view(c("abc", "a.c", "bef"), "\\.")
+
+# ^ to match the start of the string
+str_view(x, "^a")
+
+# $ to match the end of the string.
+str_view(x, "y$")
+
+#To remember which is which, try this: if you begin with power (^), you end up with money ($).
+
+x <- c("apple pie", "apple", "apple cake")
+
+str_view(x, "^apple$")
+
+```
+
+For more patterns with regular expressions, please check the stringr cheatshet. 
+
+<br>
+
+# match strings
+<hr>
+
+## str_extract() and str_extract_all()
+
+To extract the actual text of a match and return as a list. 
+
+```{r, eval=F}
+
+report <- "The first emission test was conducted on 10-09-2020 for three times. The second was tested on 10-11-2020. "
+
+str_extract(report, "\\d{2}-\\d{2}-\\d{4}") # extract the first match
+
+output <- str_extract_all(report, "\\d{2}-\\d{2}-\\d{4}") # extract all matches
+
+```
+
+## str_detect()
+
+To determine if a character vector mateches a pattern. It returns a logical vector. 
+
+```{r, eval=F}
+
+# basic usage
+str_dectect(string, pattern)
+
+match <- str_detect(x, "erry")
+
+```
+
+You can also combine str_detect() and filter() to select rows in a dataframe.
+
+```{r, eval=F}
+us_rent_income %>% 
+  mutate(NAME = str_to_lower(NAME)) %>%  # convert state name to lower case
+  filter(str_detect(NAME, "ca")) # filter state names with "ca"
+
+```
+
+## str_replace() and str_replace_all()
+
+Replace matches with new strings
+
+```{r, eval=F}
+x <- c("appl e", "pear", "banana")
+
+str_replace(x, " ", "")
+
+x <- c("1 house", "2 cars", "3 people")
+
+str_replace_all(x, c("1" = "one", "2" = "two", "3" = "three"))
+
+```
+
+## str_split
+
+Use str_split() to split a string up into pieces.
+
+```{r, eval=F}
+filename <- "D:/LearnR/input/ozone_samples_demo.csv"
+
+output <- str_split(filename, '/')
+output[[1]][4] # extract the file name
+
+output1 <- unlist(output) # use unlist() to produce a vector from a list
+output1[4]
+```
+
+
+::::{.quiz data-latex="Exercise "}
+
+__Exercise __
+
+Extract date from a pdf file. 
+
+::::
+
+Obtain the pdf text using the following code. 
+
+```{r, eval=F}
+pdf_file <- "https://github.com/MPCA-data/tidytuesdays/raw/master/show-n-tell/strings/Water%20Gremlin%20Carbon%20Adsorption%20Stack%206-19-2020.pdf"
+
+library(pdftools)
+cems_text <- pdf_text(pdf_file)
+
+```
+
+
+# Recap
+<hr>
+
+::::{.tip data-latex=""}
+<br>
+
+* string basics
+
+* regular expressions
+
+* match strings
+
+::::
