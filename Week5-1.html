@@ -473,8 +473,8 @@ $(document).ready(function () {
 <p><strong>sqrt(x)</strong>       square root – x^(1/2), x**(1/2)</p>
 <p><strong>round(x, digits = n)</strong>       round x to n decimal digits</p>
 <p><strong>log(x)</strong>       natural logarithm (base e)</p>
-<p><strong>log10(x)</strong>       common logarith (base 10)</p>
-<p><strong>exp(x)</strong>       expoentials e^x</p>
+<p><strong>log10(x)</strong>       common logarithm (base 10)</p>
+<p><strong>exp(x)</strong>       exponentials e^x</p>
 </div>
 </div>
 <div id="statistical-functions" class="section level2">
@@ -557,12 +557,12 @@ $(document).ready(function () {
 <a class="sourceLine" id="cb5-14" title="14">airquality <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">season =</span> <span class="kw">obtain_season</span>(Month))</a></code></pre></div>
 <p>You can also save your functions in a different script and use them again and again.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># we created a ObtainSeason() function and saved it in the my_functions.R</span></a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># we created a obtain_season() function and saved it in the my_functions.R</span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="kw">source</span>(<span class="st">&#39;./script/my_functions.R&#39;</span>) <span class="co">#use source() to read R code</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw">class</span>(ObtainSeason)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">class</span>(obtain_season)</a>
 <a class="sourceLine" id="cb6-4" title="4"></a>
 <a class="sourceLine" id="cb6-5" title="5">airquality <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">season =</span> <span class="kw">ObtainSeason</span>(Month))</a></code></pre></div>
+<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">season =</span> <span class="kw">obtain_season</span>(Month))</a></code></pre></div>
 <div class="quiz">
 <p><strong>Exercise </strong></p>
 <p>Write a function using year, month and day to obtain weekday/weekend: obtain_weekend()</p>
